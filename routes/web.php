@@ -23,9 +23,7 @@ Route::get('/contacts', function () {
     return "Contacts page";
 });
 
-Route::get('/post/{id}/{name}', function($id, $name) {
-    return "This is post number ". $id ." with name ". $name;
-});
+Route::get('/post/{id}/{name}', 'PostController@index');
 
 Route::get('admin/posts/example', array('as' => 'admin.home', function() {
     $url = route('admin.home');
