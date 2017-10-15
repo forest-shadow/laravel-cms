@@ -82,4 +82,8 @@ class PostController extends Controller
     {
         //
     }
+
+    public function show_post($id, $name, $author) {
+        return view('post', compact('id','name', 'author'));
+    }
 }

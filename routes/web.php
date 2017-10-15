@@ -15,21 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function () {
-    return "About page";
-});
-
-Route::get('/contacts', function () {
-    return "Contacts page";
-});
-
-Route::get('/post/{id}/{name}', 'PostController@index');
-
-Route::get('admin/posts/example', array('as' => 'admin.home', function() {
-    $url = route('admin.home');
-
-    return "This Url is ". $url;
-}));
-
-Route::resource('posts', 'PostController');
-
+Route::get('/post/{id}/{name}/{author}', 'PostController@show_post');
