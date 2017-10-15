@@ -31,3 +31,5 @@ Route::get('admin/posts/example', array('as' => 'admin.home', function() {
     return "This Url is ". $url;
 }));
 
+Route::resource('posts', 'PostController');
+
