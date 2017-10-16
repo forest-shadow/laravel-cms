@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/post/{id}/{name}/{author}', 'PostController@show_post');
+
+Route::get('/contact', function() {
+    $people = ['Edwin', 'Jose', 'James', 'Peter', 'Maria'];
+
+   return view('contact', compact('people'));
+});
