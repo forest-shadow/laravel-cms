@@ -15,7 +15,7 @@ class AddIsAdminColumnToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->unsignedInteger('is_admin');
+            $table->unsignedInteger('is_admin')->default(0);
         });
     }
 
