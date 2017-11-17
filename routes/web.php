@@ -47,17 +47,17 @@ Route::get('/insert', function() {
 //   }
 //});
 
-Route::get('/update', function() {
-    $updated = DB::update('update posts set title="Updated title" where id = ?', [1]);
-
-    return $updated;
-});
-
-Route::get('/delete', function() {
-    $deleted = DB::delete('delete from posts where id = ?', [1]);
-
-    return $deleted;
-});
+//Route::get('/update', function() {
+//    $updated = DB::update('update posts set title="Updated title" where id = ?', [1]);
+//
+//    return $updated;
+//});
+//
+//Route::get('/delete', function() {
+//    $deleted = DB::delete('delete from posts where id = ?', [1]);
+//
+//    return $deleted;
+//});
 
 
 /*
@@ -107,4 +107,22 @@ Route::get('/basicinsert2', function() {
     $post->content = 'Wow eloquent is really cool, look at this content';
 
     $post->save();
+});
+
+Route::get('/create', function() {
+    Post::create(['title' => 'The create method', 'content' => 'Wow, I\'m learning alot with Edwin Diaz']);
+});
+
+Route::get('/update', function() {
+    Post::where('id', 2)->where('is_admin', 0)->update(['title' => 'New PHP Title', 'content' => 'I love my instructor Edwin.']);
+});
+
+Route::get('/delete', function() {
+    $post = Post::find(2);
+
+    $post->delete();
+});
+
+Route::get('/delete1', function() {
+    Post::destroy(3, 4);
 });
