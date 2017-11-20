@@ -126,3 +126,22 @@ Route::get('/delete', function() {
 Route::get('/delete1', function() {
     Post::destroy(3, 4);
 });
+
+Route::get('/softdelete', function() {
+    Post::find(3)->delete();
+});
+
+Route::get('/readsoftdelete', function() {
+    $post = Post::withTrashed()->get();
+
+//    $post = Post::onlyTrashed()->get();
+    return $post;
+});
+
+Route::get('/restore', function() {
+    Post::withTrashed()->where('is_admin', 0)->restore();
+});
+
+Route::get('/deletesoftdeleted', function() {
+    Post::onlyTrashed()->forceDelete();
+});
