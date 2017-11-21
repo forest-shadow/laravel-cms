@@ -175,3 +175,16 @@ Route::get('/posts', function() {
         echo $post->title ."<br>";
     }
 });
+
+/* Many to many relationship */
+Route::get('/user/{id}/role', function($id) {
+    $user = User::find($id);
+
+    $userRole = User::find($id)->roles()->orderBy('id', 'desc')->get();
+
+    foreach ($user->roles as $role) {
+        echo $role->name ."<br>";
+    }
+
+    return $userRole;
+});
