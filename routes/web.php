@@ -1,4 +1,6 @@
 <?php
+use App\Post;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +67,6 @@ Route::get('/insert', function() {
 | Eloquent/ORM
 |--------------------------------------------------------------------------
 */
-use App\Post;
 
 Route::get('/read', function() {
     $posts = Post::all();
@@ -127,6 +128,12 @@ Route::get('/delete1', function() {
     Post::destroy(3, 4);
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent/ORM: Soft Delete
+|--------------------------------------------------------------------------
+*/
 Route::get('/softdelete', function() {
     Post::find(3)->delete();
 });
@@ -144,4 +151,13 @@ Route::get('/restore', function() {
 
 Route::get('/deletesoftdeleted', function() {
     Post::onlyTrashed()->forceDelete();
+});
+
+/*
+|--------------------------------------------------------------------------
+| Eloquent/ORM:
+|--------------------------------------------------------------------------
+*/
+Route::get('/user/{id}/post', function($id) {
+    return User::find($id)->post;
 });

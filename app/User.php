@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the post record associated with the user.
+     */
+    public function post() {
+        return $this->hasOne('App\Post');
+    }
 }
