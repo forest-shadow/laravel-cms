@@ -1,6 +1,7 @@
 <?php
 use App\Country;
 use App\Post;
+use App\Photo;
 use App\User;
 
 /*
