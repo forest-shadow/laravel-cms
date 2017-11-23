@@ -1,4 +1,5 @@
 <?php
+use App\Country;
 use App\Post;
 use App\User;
 
@@ -187,4 +188,12 @@ Route::get('/user/{id}/role', function($id) {
     }
 
     return $userRole;
+});
+
+Route::get('/user/country', function() {
+    $country = Country::find(2);
+
+    foreach($country->posts as $post) {
+        echo $post->title . "<br>";
+    }
 });
