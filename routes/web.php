@@ -197,3 +197,25 @@ Route::get('/user/country', function() {
         echo $post->title . "<br>";
     }
 });
+
+/* Polymorphic Relations */
+Route::get('/user/photos', function() {
+    $user = User::find(1);
+
+    foreach($user->photos as $photo) {
+        echo $photo->path . "<br>";
+    }
+});
+
+Route::get('/post/photos', function() {
+    $post = Post::find(1);
+
+    foreach($post->photos as $photo) {
+        echo $photo->path . "<br>";
+    }
+});
+
+Route::get('/photo/{id}/post', function($id) {
+    $photo = Photo::findOrFail($id);
+    return $photo->imageable;
+});
